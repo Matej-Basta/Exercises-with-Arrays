@@ -65,71 +65,117 @@
 // echo "</ol>";
 
 
-$movie_names = [
-  'tt0468569' => 'Dark Knight', 
-  'tt0050083' => '12 angry men', 
-  'tt0108052' => 'Schindler\'s list',
-  'tt0110912' => 'Pulp fiction',
-  'tt0167260' => 'Lord of the Rings: Return of the King',
-  'tt0111161' => 'The Shawshank redemption',
-  'tt0071562' => 'The Godfather II',
-  'tt0060196' => 'The good, the bad and the ugly',
-  'tt0137523' => 'Fight club',
-  'tt0068646' => 'The Godfather',
-];
+// $movie_names = [
+//   'tt0468569' => 'Dark Knight', 
+//   'tt0050083' => '12 angry men', 
+//   'tt0108052' => 'Schindler\'s list',
+//   'tt0110912' => 'Pulp fiction',
+//   'tt0167260' => 'Lord of the Rings: Return of the King',
+//   'tt0111161' => 'The Shawshank redemption',
+//   'tt0071562' => 'The Godfather II',
+//   'tt0060196' => 'The good, the bad and the ugly',
+//   'tt0137523' => 'Fight club',
+//   'tt0068646' => 'The Godfather',
+// ];
 
-$movie_ratings = [
-  'tt0111161' => 9.2,
-  'tt0068646' => 9.2,
-  'tt0071562' => 9.0,
-  'tt0468569' => 8.9, 
-  'tt0050083' => 8.9, 
-  'tt0108052' => 8.9,
-  'tt0110912' => 8.9,
-  'tt0167260' => 8.9,
-  'tt0060196' => 8.9,
-  'tt0137523' => 8.8,
-];
+// $movie_ratings = [
+//   'tt0111161' => 9.2,
+//   'tt0068646' => 9.2,
+//   'tt0071562' => 9.0,
+//   'tt0468569' => 8.9, 
+//   'tt0050083' => 8.9, 
+//   'tt0108052' => 8.9,
+//   'tt0110912' => 8.9,
+//   'tt0167260' => 8.9,
+//   'tt0060196' => 8.9,
+//   'tt0137523' => 8.8,
+// ];
 
-echo "<ul>";
+// echo "<ul>";
 
-arsort($movie_ratings);
+// arsort($movie_ratings);
  
-foreach($movie_ratings as $key => $rating) {
-    echo "<li>{$movie_names[$key]} - {$rating}</li>";
-}
+// foreach($movie_ratings as $key => $rating) {
+//     echo "<li>{$movie_names[$key]} - {$rating}</li>";
+// }
 
-echo "</ul>";
+// echo "</ul>";
 
-$movie = [];
+// $movie = [];
 
-foreach($movie_ratings as $key => $rating) {
-    $movie[$key]["name"] = $movie_names[$key];
-    $movie[$key]["rating"] = $rating;
-}
+// foreach($movie_ratings as $key => $rating) {
+//     $movie[$key]["name"] = $movie_names[$key];
+//     $movie[$key]["rating"] = $rating;
+// }
 
-var_dump($movie);
+// var_dump($movie);
 
-echo "<br/>";
-echo "<br/>";
+// echo "<br/>";
+// echo "<br/>";
 
 
-uasort($movie, function($a, $b) {
-    if ($a["rating"] < $b["rating"]) {
-        return -1;
-    } elseif($a["rating"] > $b["rating"]) {
-        return 1;
-    } elseif ($a["rating"] === $b["rating"]) {
+// uasort($movie, function($a, $b) {
+//     if ($a["rating"] < $b["rating"]) {
+//         return -1;
+//     } elseif($a["rating"] > $b["rating"]) {
+//         return 1;
+//     } elseif ($a["rating"] === $b["rating"]) {
         
-        if($a["name"] > $b["name"]) {
-            return 1;
-        } elseif($a["name"] < $b    ["name"]) {
-            return -1;
-        } elseif($a["name"] === $b["name"]) {
-            return 0;
-        }
-    };
-});
+//         if($a["name"] > $b["name"]) {
+//             return 1;
+//         } elseif($a["name"] < $b    ["name"]) {
+//             return -1;
+//         } elseif($a["name"] === $b["name"]) {
+//             return 0;
+//         }
+//     };
+// });
 
-var_dump($movie);
+// var_dump($movie);
+
+
+$messages = [
+  'error' => [
+    'Something went wrong',
+    'Something went REALLY wrong',
+    'There is no end to this!'
+  ],
+  'warning' => [
+    'This is your first warning',
+    'This is your final warning'
+  ],
+  'success' => [
+    'Finally, something was successful.'
+  ]
+];
+
+echo "<div class='messages'>";
+foreach($messages as $key => $value) {
+
+    for($i = 0; $i < count($value); $i++) {
+        echo "<div class='message {$key}'>$value[$i]</div>";
+    }
+};
+echo "</div>";
+
+
+
+function do_something_risky() {
+  // pretend to do the risky stuff
+ 
+  // return new messages
+  return [
+    'error' => [
+      'I knew this would happen!',
+      'This always happens.'
+    ],
+    'warning' => [
+      'You should fix this before proceeding'
+    ],
+    'success' => []
+  ];
+}
+ 
+// let's try it
+$new_messages = do_something_risky();
 ?>
