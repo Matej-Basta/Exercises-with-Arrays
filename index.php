@@ -74,9 +74,10 @@ $movie_names = [
   'tt0111161' => 'The Shawshank redemption',
   'tt0071562' => 'The Godfather II',
   'tt0060196' => 'The good, the bad and the ugly',
-  'tt0137523' => 'Fight club'
+  'tt0137523' => 'Fight club',
   'tt0068646' => 'The Godfather',
 ];
+
 $movie_ratings = [
   'tt0111161' => 9.2,
   'tt0068646' => 9.2,
@@ -87,6 +88,48 @@ $movie_ratings = [
   'tt0110912' => 8.9,
   'tt0167260' => 8.9,
   'tt0060196' => 8.9,
-  'tt0137523' => 8.8
+  'tt0137523' => 8.8,
 ];
+
+echo "<ul>";
+
+arsort($movie_ratings);
+ 
+foreach($movie_ratings as $key => $rating) {
+    echo "<li>{$movie_names[$key]} - {$rating}</li>";
+}
+
+echo "</ul>";
+
+$movie = [];
+
+foreach($movie_ratings as $key => $rating) {
+    $movie[$key]["name"] = $movie_names[$key];
+    $movie[$key]["rating"] = $rating;
+}
+
+var_dump($movie);
+
+echo "<br/>";
+echo "<br/>";
+
+
+uasort($movie, function($a, $b) {
+    if ($a["rating"] < $b["rating"]) {
+        return -1;
+    } elseif($a["rating"] > $b["rating"]) {
+        return 1;
+    } elseif ($a["rating"] === $b["rating"]) {
+        
+        if($a["name"] > $b["name"]) {
+            return 1;
+        } elseif($a["name"] < $b    ["name"]) {
+            return -1;
+        } elseif($a["name"] === $b["name"]) {
+            return 0;
+        }
+    };
+});
+
+var_dump($movie);
 ?>
