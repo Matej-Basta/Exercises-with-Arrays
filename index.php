@@ -149,14 +149,14 @@ $messages = [
   ]
 ];
 
-echo "<div class='messages'>";
-foreach($messages as $key => $value) {
+// echo "<div class='messages'>";
+// foreach($messages as $key => $value) {
 
-    for($i = 0; $i < count($value); $i++) {
-        echo "<div class='message {$key}'>$value[$i]</div>";
-    }
-};
-echo "</div>";
+//     for($i = 0; $i < count($value); $i++) {
+//         echo "<div class='message {$key}'>$value[$i]</div>";
+//     }
+// };
+// echo "</div>";
 
 
 
@@ -178,4 +178,26 @@ function do_something_risky() {
  
 // let's try it
 $new_messages = do_something_risky();
+
+// var_dump($new_messages["error"]);
+// echo "<br/>";
+
+foreach($messages as $key => $value) {
+ 
+        $messages[$key] = array_merge($value, $new_messages[$key]);
+
+        // var_dump($new_messages[$key]);
+        // echo '::::::::::::::::::::::::::::';
+        // var_dump($value);
+        
+
+        // array_merge($value, [1]);
+
+        var_dump($value);
+        echo('<br>');
+
+  };
+
+echo "<br/>";
+  var_dump($messages);
 ?>
