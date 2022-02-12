@@ -192,12 +192,26 @@ foreach($messages as $key => $value) {
         
 
         // array_merge($value, [1]);
-
-        var_dump($value);
-        echo('<br>');
-
   };
 
 echo "<br/>";
   var_dump($messages);
+  echo "<br/>";
+
+foreach($messages as $key => $value){
+  foreach($messages[$key] as $value) {
+echo "<p>{$value}</p>";
+  }
+}
+
+echo "<br/>";
+echo "<br/>";
+echo "<br/>";
+var_dump(parse_url("http://www.example.com?foo=bar"));
+echo "<br/>";
+echo "<br/>";
+echo "<br/>";
+$query_string = '?page=home&foo=bar';
+parse_str($query_string, $data);
+var_dump($data);
 ?>
